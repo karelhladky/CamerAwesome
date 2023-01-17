@@ -62,7 +62,7 @@ class AwesomeTopActions extends StatelessWidget {
           children: [
             AwesomeFlashButton(state: state),
             AwesomeAspectRatioButton(state: state),
-            AwesomeLocationButton(state: state),
+//            AwesomeLocationButton(state: state),
           ],
         ),
       );
