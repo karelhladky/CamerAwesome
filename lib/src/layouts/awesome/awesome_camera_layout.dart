@@ -6,11 +6,13 @@ import '../../../camerawesome_plugin.dart';
 class AwesomeCameraLayout extends StatelessWidget {
   final CameraState state;
   final OnMediaTap onMediaTap;
+  final OnPhotoTaken onPhotoTaken;
 
   const AwesomeCameraLayout({
     super.key,
     required this.state,
     this.onMediaTap,
+    this.onPhotoTaken,
   });
 
   @override
@@ -30,7 +32,7 @@ class AwesomeCameraLayout extends StatelessWidget {
               child: Column(
                 children: [
                   AwesomeCameraModeSelector(state: state),
-                  AwesomeBottomActions(state: state, onMediaTap: onMediaTap),
+                  AwesomeBottomActions(state: state, onMediaTap: onMediaTap, onPhotoTaken: onPhotoTaken,),
                   const SizedBox(height: 32),
                 ],
               ),
@@ -73,11 +75,13 @@ class AwesomeTopActions extends StatelessWidget {
 class AwesomeBottomActions extends StatelessWidget {
   final CameraState state;
   final OnMediaTap onMediaTap;
+  final OnPhotoTaken onPhotoTaken;
 
   const AwesomeBottomActions({
     super.key,
     required this.state,
     this.onMediaTap,
+    this.onPhotoTaken,
   });
 
   @override
@@ -97,6 +101,7 @@ class AwesomeBottomActions extends StatelessWidget {
           // Spacer(),
           AwesomeCaptureButton(
             state: state,
+            onPhotoTaken: onPhotoTaken,
           ),
           // Spacer(),
           Flexible(

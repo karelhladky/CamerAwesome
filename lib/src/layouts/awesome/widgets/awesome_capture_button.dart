@@ -2,14 +2,17 @@
 
 import 'package:camerawesome/src/orchestrator/analysis/analysis_controller.dart';
 import 'package:camerawesome/src/orchestrator/states/camera_state.dart';
+import 'package:camerawesome/src/builder/camera_awesome_builder.dart';
 import 'package:flutter/material.dart';
 
 class AwesomeCaptureButton extends StatefulWidget {
   final CameraState state;
+  final OnPhotoTaken onPhotoTaken;
 
   const AwesomeCaptureButton({
     super.key,
     required this.state,
+    required this.onPhotoTaken,
   });
 
   @override
@@ -91,7 +94,11 @@ class _AwesomeCaptureButtonState extends State<AwesomeCaptureButton>
 
   get onTap => () {
         widget.state.when(
-          onPhotoMode: (photoState) => photoState.takePhoto(),
+          onPhotoMode: (photoState) {
+            photoState.takePhoto().then((value) {
+              widget.onPhotoTaken?.call(value);
+            });
+          },
           onVideoMode: (videoState) => videoState.startRecording(),
           onVideoRecordingMode: (videoState) => videoState.stopRecording(),
         );

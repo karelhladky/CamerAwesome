@@ -32,6 +32,9 @@ typedef CameraLayoutBuilder = Widget Function(
 /// Callback when a video or photo has been saved and user click on thumbnail
 typedef OnMediaTap = Function(MediaCapture mediaCapture)?;
 
+/// Callback when a photo has been saved
+typedef OnPhotoTaken = Function(String path)?;
+
 /// Used to set a permission result callback
 typedef OnPermissionsResult = void Function(bool result);
 
@@ -140,6 +143,7 @@ class CameraAwesomeBuilder extends StatefulWidget {
     Widget? progressIndicator,
     required SaveConfig saveConfig,
     Function(MediaCapture)? onMediaTap,
+    OnPhotoTaken onPhotoTaken,
     OnImageForAnalysis? onImageForAnalysis,
     AnalysisConfig? imageAnalysisConfig,
     OnPreviewTap Function(CameraState)? onPreviewTapBuilder,
@@ -158,6 +162,7 @@ class CameraAwesomeBuilder extends StatefulWidget {
               AwesomeCameraLayout(
             state: cameraModeState,
             onMediaTap: onMediaTap,
+            onPhotoTaken: onPhotoTaken,
           ),
           saveConfig: saveConfig,
           onMediaTap: onMediaTap,
