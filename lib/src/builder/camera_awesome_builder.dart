@@ -35,6 +35,9 @@ typedef OnMediaTap = Function(MediaCapture mediaCapture)?;
 /// Callback when a photo has been saved
 typedef OnPhotoTaken = Function(String path)?;
 
+/// Callback when a close button clicked
+typedef OnClose = Function()?;
+
 /// Used to set a permission result callback
 typedef OnPermissionsResult = void Function(bool result);
 
@@ -144,6 +147,7 @@ class CameraAwesomeBuilder extends StatefulWidget {
     required SaveConfig saveConfig,
     Function(MediaCapture)? onMediaTap,
     OnPhotoTaken onPhotoTaken,
+    OnClose onClose,
     OnImageForAnalysis? onImageForAnalysis,
     AnalysisConfig? imageAnalysisConfig,
     OnPreviewTap Function(CameraState)? onPreviewTapBuilder,
@@ -163,6 +167,7 @@ class CameraAwesomeBuilder extends StatefulWidget {
             state: cameraModeState,
             onMediaTap: onMediaTap,
             onPhotoTaken: onPhotoTaken,
+            onClose: onClose,
           ),
           saveConfig: saveConfig,
           onMediaTap: onMediaTap,
