@@ -7,12 +7,14 @@ class AwesomeCameraLayout extends StatelessWidget {
   final CameraState state;
   final OnMediaTap onMediaTap;
   final OnPhotoTaken onPhotoTaken;
+  final OnClose onClose;
 
   const AwesomeCameraLayout({
     super.key,
     required this.state,
     this.onMediaTap,
     this.onPhotoTaken,
+    this.onClose,
   });
 
   @override
@@ -22,7 +24,7 @@ class AwesomeCameraLayout extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 16),
-          AwesomeTopActions(state: state),
+          AwesomeTopActions(state: state, onClose: onClose,),
           const Spacer(),
           AwesomeSensorTypeSelector(state: state),
           const SizedBox(height: 12),
@@ -46,10 +48,12 @@ class AwesomeCameraLayout extends StatelessWidget {
 
 class AwesomeTopActions extends StatelessWidget {
   final CameraState state;
+  final OnClose onClose;
 
   const AwesomeTopActions({
     super.key,
     required this.state,
+    this.onClose,
   });
 
   @override
@@ -63,6 +67,7 @@ class AwesomeTopActions extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             AwesomeFlashButton(state: state),
+            AwesomeCloseButton(onClose: onClose),
             AwesomeAspectRatioButton(state: state),
 //            AwesomeLocationButton(state: state),
           ],

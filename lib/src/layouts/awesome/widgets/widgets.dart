@@ -4,6 +4,7 @@ export 'awesome_camera_mode_selector.dart';
 export 'awesome_camera_preview.dart';
 export 'awesome_camera_switch_button.dart';
 export 'awesome_capture_button.dart';
+export 'awesome_close_button.dart';
 export 'awesome_flash_button.dart';
 export 'awesome_focus_indicator.dart';
 export 'awesome_location_button.dart';
